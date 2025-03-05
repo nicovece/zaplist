@@ -8,6 +8,8 @@
   --color__secondary: hsl(49, 96%, 66%);
   --color__secondary--lighter: hsl(49, 96%, 85%);
   --color__tertiary: hsl(0, 70%, 60%);
+  --color__tertiary--darker: hsl(0, 70%, 40%);
+  --color__tertiary--lighter: hsl(0, 70%, 80%);
 }
 
 body {
@@ -23,6 +25,11 @@ body {
 
 h2 {
   font-weight: 400;
+}
+
+.logo {
+  max-width: 6rem;
+  margin-bottom: 1rem;
 }
 
 .container {
@@ -162,7 +169,15 @@ li > crossOutButton {
   }
 }
 
-.logo {
-  max-width: 6rem;
-  margin-bottom: 1rem;
+.messages {
+  transition: all 250ms;
+}
+.messages.alert {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px dashed var(--color__tertiary--lighter);
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--color__tertiary--darker);
 }

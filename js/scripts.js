@@ -41,7 +41,7 @@ function newZapItem() {
   let input = $('#input');
   let inputValue = input.val();
   let messages = $('.messages');
-  let crossOutButton = $('<crossOutButton>X</crossOutButton>');
+  let crossOutButton = $('<crossOutButton></crossOutButton>');
   li.append(inputValue).append(crossOutButton);
 
   /* Insert list item */

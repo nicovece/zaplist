@@ -9,17 +9,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>ZapList - Strike tasks off in a flash.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+    integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
   <div class="container">
-    <h1>ZapList</h1>
-    <h2>Zap through your tasks!</h2>
-    <h2>Strike tasks off in a flash.</h2>
-    <p><em> Double click to mark an item off, click on "X" to delete an item, and drag items to reorder.</em></p>
-
-    <form name="toDoList">
+    <div class="intro">
+      <img class="logo" src="img/zaplist.png" alt="ZapList logo" />
+      <h1>ZapList</h1>
+      <h2><strong>Zap through your tasks!</strong></h2>
+      <h2>Strike tasks off in a flash.</h2>
+      <p><em> Double click to mark an item off, click on "X" to delete an item, and drag items to reorder.</em></p>
+    </div>
+    <form id="form" name="toDoList">
       <input type="text" name="ListItem" id="input" />
     </form>
 

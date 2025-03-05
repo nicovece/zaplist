@@ -34,19 +34,44 @@ function newItem() {
   $('#list').sortable();
 }
 
+/* JQuery version */
 function newZapItem() {
-  let messages = $('.messages');
   let list = $('#list');
   let li = $('<li></li>');
-  let inputValue = $('#input').val();
+  let input = $('#input');
+  let inputValue = input.val();
+  let messages = $('.messages');
+  let crossOutButton = $('<crossOutButton>X</crossOutButton>');
+  li.append(inputValue).append(crossOutButton);
 
+  /* Insert list item */
   if (inputValue === '') {
-    $('#button').append('<p class="alert">You must write something!</p>');
+    messages
+      .addClass('alert')
+      .html('<p class="alert">You must write something!</p>');
+    // $("#button").append('<p class="alert">You must write something!</p>');
     // alert("You must write something!");
   } else {
-    li.append(inputValue);
     list.append(li);
   }
+
+  /* Clear message on input */
+  $('#input').on('input', function () {
+    messages.removeClass('alert').html('');
+  });
+
+  /* Cross out item */
+  li.on('dblclick', function () {
+    li.toggleClass('strike');
+  });
+
+  /* Delete and remove item */
+  crossOutButton.on('click', function () {
+    li.addClass('delete').remove();
+  });
+
+  /* make the list sortable */
+  list.sortable();
 
   console.log('newZapItem' + inputValue);
 }

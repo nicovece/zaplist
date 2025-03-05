@@ -1,59 +1,130 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap");
+
+:root {
+  --color__primary: hsl(205, 91%, 63%);
+  --color__primary--darker: hsl(205, 91%, 48%);
+  --color__primary--text: hsl(205, 91%, 33%);
+  --color__primary--lighter: hsl(205, 91%, 98%);
+  --color__secondary: hsl(49, 96%, 66%);
+  --color__secondary--lighter: hsl(49, 96%, 85%);
+  --color__tertiary: hsl(0, 70%, 60%);
+}
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
   font:
-    normal normal 13px/16px "Open Sans",
-    sans-serif;
-  background: #dfdfdf;
+    normal normal 16px/18px "Fira Mono",
+    monospace;
+  background: var(--color__secondary--lighter);
+}
+
+h2 {
+  font-weight: 400;
 }
 
 .container {
-  padding: 20px;
-  width: 300px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
   margin-top: 40px;
   background: white;
   border-radius: 5px;
 }
 
-form {
-  display: inline-block;
+.intro {
+  text-align: center;
 }
 
-input {
-  padding: 4px 15px 4px 5px;
+form {
+  display: block;
+  width: 100%;
+}
+
+input,
+#button {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border: 2px solid var(--color__primary--darker);
 }
 
 #button {
   display: inline-block;
-  background-color: #fc999b;
+  margin-top: 0;
+  background-color: var(--color__primary);
   color: #ffffff;
   border-radius: 5px;
   text-align: center;
-  margin-top: 2px;
-  padding: 5px 15px;
+  line-height: 1.5;
+  transition: all 250ms;
 }
 
-#button:hover {
-  cursor: pointer;
-  opacity: 0.8;
+@media (hover: hover) {
+  #button:hover {
+    cursor: pointer;
+    background-color: var(--color__primary--darker);
+    transform: scale(1.05);
+  }
 }
 
 ol {
-  padding-left: 20px;
+  padding-left: 0;
+  list-style-position: inside;
 }
 
 ol li {
-  padding: 5px;
+  padding: 1em 1em 1em 0.5em;
   color: #000;
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: all 0.25s;
+  position: relative;
+  color: var(--color__primary--text);
+}
+
+ol li::marker {
+  color: var(--color__primary);
+  font-weight: 400;
+  background-color: var(--color__secondary);
 }
 
 ol li:nth-child(even) {
-  background: #dfdfdf;
+  background: var(--color__primary--lighter);
 }
 
+ol li + li {
+  border-top: 1px solid var(--color__primary);
+}
+
+@media (hover: hover) {
+  ol li:hover,
+  ol li:nth-child(even):hover {
+    background: var(--color__secondary);
+  }
+}
 .strike {
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
+  position: relative;
+}
+
+.strike::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color__tertiary);
+}
+
+.strike > crossOutButton {
+  display: none;
 }
 
 li:hover {
@@ -65,9 +136,33 @@ li:hover {
 }
 
 li > crossOutButton {
-  background: none;
-  border: none;
-  float: right;
-  color: #025f70;
-  font-weight: 800;
+  width: 1.5rem;
+  height: 1.45rem;
+  position: absolute;
+  right: 1em;
+  top: calc(50% + 1px);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: var(--color__tertiary);
+  border: 2px solid var(--color__tertiary);
+  color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 87'%3E%3Cpath id='Tracciato_3' data-name='Tracciato 3' d='M81.679,80.629Q94.95,67.859,94.95,49.95T81.679,19.271A43.632,43.632,0,0,0,49.95,6.45,44.367,44.367,0,0,0,17.971,19.271,41.437,41.437,0,0,0,4.95,49.95,41.437,41.437,0,0,0,17.971,80.629,44.367,44.367,0,0,0,49.95,93.45,43.632,43.632,0,0,0,81.679,80.629M49.75,41.469,61.524,29.647q7.808.647,8.581,8.53L58.431,49.85,70.105,61.623q-.7,7.682-8.581,8.53L49.75,58.331,38.126,69.954q-7.737-.824-8.431-8.481L41.269,49.9,29.7,38.327q.7-7.832,8.431-8.481Z' transform='translate(-4.95 -6.45)' fill='%23ffffff'/%3E%3C/svg%3E%0A");
+  background-size: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.75;
+  transition: all 250ms;
+}
+
+@media (hover: hover) {
+  li > crossOutButton:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 87'%3E%3Cpath id='Tracciato_3' data-name='Tracciato 3' d='M81.679,80.629Q94.95,67.859,94.95,49.95T81.679,19.271A43.632,43.632,0,0,0,49.95,6.45,44.367,44.367,0,0,0,17.971,19.271,41.437,41.437,0,0,0,4.95,49.95,41.437,41.437,0,0,0,17.971,80.629,44.367,44.367,0,0,0,49.95,93.45,43.632,43.632,0,0,0,81.679,80.629M49.75,41.469,61.524,29.647q7.808.647,8.581,8.53L58.431,49.85,70.105,61.623q-.7,7.682-8.581,8.53L49.75,58.331,38.126,69.954q-7.737-.824-8.431-8.481L41.269,49.9,29.7,38.327q.7-7.832,8.431-8.481Z' transform='translate(-4.95 -6.45)' fill='%23e05252'/%3E%3C/svg%3E%0A");
+    background-color: #fff;
+    opacity: 1;
+  }
+}
+
+.logo {
+  max-width: 6rem;
+  margin-bottom: 1rem;
 }
